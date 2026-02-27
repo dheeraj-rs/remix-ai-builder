@@ -1,0 +1,32 @@
+@use './chat/BaseChat.scss';
+@use './builder';
+@import './toast.css';
+
+.layout__wrapper.layout-mobile-config-active .layout__config {
+  z-index: 9999 !important;
+  visibility: visible !important;
+  display: block !important;
+  transform: translateX(0) !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  position: fixed !important;
+  height: 100% !important;
+  width: 300px !important;
+}
+
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

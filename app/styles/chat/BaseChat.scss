@@ -1,0 +1,171 @@
+.baseChat {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--d-admin-surface-ground);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &[data-chat-visible='false'] {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      var(--d-admin-surface-d) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.scrollContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding: 1rem 1rem 12rem 1rem;
+  min-height: 0;
+  transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.landing {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
+    height: 100%;
+  }
+}
+
+.intro {
+  max-width: var(--chat-max-width);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10vh;
+  @media (max-width: 768px) {
+    margin-top: -30vh;
+  }
+}
+
+.inputArea {
+  position: absolute;
+  bottom: 7rem !important;
+  left: 0;
+  z-index: 20;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  background: linear-gradient(
+    to top,
+    var(--d-admin-surface-ground) 80%,
+    transparent
+  );
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 768px) {
+    bottom: 11rem !important;
+  }
+
+  &.landing {
+    position: absolute;
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    bottom: 7rem !important;
+    left: 0;
+    width: 100%;
+    max-width: var(--chat-max-width);
+
+    @media (max-width: 768px) {
+      bottom: 11rem !important;
+    }
+  }
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  max-width: var(--chat-max-width);
+  margin: 0 auto;
+  background-color: var(--surface-b);
+  border: 1px solid var(--d-admin-surface-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  &:focus-within {
+    border-color: var(--d-admin-primary-color);
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 4rem;
+  background: transparent;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  color: var(--d-admin-text-color);
+  outline: none;
+
+  &::placeholder {
+    color: var(--d-admin-text-color-secondary);
+  }
+}
+
+.examples {
+  position: relative;
+  width: 100%;
+  max-width: var(--chat-max-width);
+  margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.examples-center {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.exampleButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--surface-0);
+  border: 1px solid var(--d-admin-surface-border);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: var(--d-admin-text-color-secondary);
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--d-admin-surface-d);
+    color: var(--d-admin-text-color);
+    border-color: var(--surface-400);
+  }
+}
